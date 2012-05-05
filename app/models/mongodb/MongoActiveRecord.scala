@@ -7,6 +7,8 @@ import com.novus.salat.dao._
 import com.mongodb.casbah.{MongoConnection, MongoURI}
 import com.novus.salat.annotations.raw.Persist
 
+import mojolly.inflector.InflectorImports._
+
 abstract class MongoActiveRecord extends CRUDable with Product {
   import ReflectionUtil.toReflectable
 
@@ -43,7 +45,7 @@ abstract class MongoActiveRecordCompanion[T <: MongoActiveRecord](
   implicit def stringToMongoDBObject(id: String) = MongoDBObject("_id" -> new ObjectId(id))
 
   lazy val db = MongoSettings.conf.mongoDB
-  lazy val collection = db(tableName.getOrElse("users"))
+  lazy val collection = db(tableName.getOrElse(mot.erasure.getSimpleName.camelize.pluralize))
   lazy val dao = new SalatDAO[T, ObjectId](collection = collection) {}
   def all = findAll().toList
   def delete(id: String): Unit = this.remove(id)

@@ -7,7 +7,8 @@ object ApplicationBuild extends Build {
   val appVersion = "1.0-SNAPSHOT"
 
   val appDependencies = Seq(
-    "com.novus" %% "salat-core" % "0.0.8-SNAPSHOT"
+    "com.novus" %% "salat-core" % "0.0.8-SNAPSHOT",
+    "io.backchat.inflector" %% "scala-inflector" % "1.3.3"
   )
 
   val main = PlayProject(appName, appVersion, appDependencies, mainLang = SCALA).settings(
