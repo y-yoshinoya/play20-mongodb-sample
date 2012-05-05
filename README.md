@@ -1,3 +1,10 @@
+# Play! 2.0 + MongoDB Sample Application
+
+## Sample Heroku URL
+
+http://play20-mongodb-sample.herokuapp.com/
+
+## Commands (Deploying an app to Heroku)
 ```sh
 $ git init
 $ git add.
